@@ -67,4 +67,41 @@ describe('Reducers', () => {
       })
     );
   });
+
+  it('handles VOTE by setting hasVoted', () => {
+    const state = fromJS({
+      vote: {
+        pair: ['Brazil', 'France'],
+        tally: { 'France': 4 },
+      },
+    });
+    const nextState = reducer(state, { type: 'VOTE', entry: 'France' });
+    expect(nextState).toEqual(
+      fromJS({
+        vote: {
+          pair: ['Brazil', 'France'],
+          tally: { 'France': 4 },
+        },
+        hasVoted: 'France',
+      })
+    );
+  });
+
+  it('does not set hasVoted for VOTE on invalid entry', () => {
+    const state = fromJS({
+      vote: {
+        pair: ['Brazil', 'France'],
+        tally: { 'France': 4 },
+      },
+    });
+    const nextState = reducer(state, { type: 'VOTE', entry: 'Portugal' });
+    expect(nextState).toEqual(
+      fromJS({
+        vote: {
+          pair: ['Brazil', 'France'],
+          tally: { 'France': 4 },
+        },
+      })
+    );
+  });
 });
