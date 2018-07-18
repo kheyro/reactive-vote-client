@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Winner from '../components/Winner';
 
 class Results extends Component {
   getPair = () => this.props.pair || [];
@@ -11,7 +12,9 @@ class Results extends Component {
   };
 
   render() {
-    return (
+    return this.props.winner ? (
+      <Winner winner={this.props.winner} />
+    ) : (
       <div className="results">
         <div className="tally">
           {this.getPair().map(entry => (
