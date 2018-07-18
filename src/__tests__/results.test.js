@@ -1,7 +1,7 @@
 import React from 'react';
 import { List, Map } from 'immutable';
 import { mount } from 'enzyme';
-import Results from '../components/Results';
+import { Results } from '../components/Results';
 import Winner from '../components/Winner';
 
 let wrapper;
