@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { List, Map } from 'immutable';
-import Voting from '../components/Voting';
+import { VotingContainer } from '../components/Voting';
 
 const pair = List.of('Brazil', 'France');
 const tally = Map({ 'Brazil': 5, 'France': 4 });
 
 const Home = () => (
   <div className="row">
-    <Voting pair={pair} tally={tally} />
+    <VotingContainer pair={pair} tally={tally} />
   </div>
 );
 

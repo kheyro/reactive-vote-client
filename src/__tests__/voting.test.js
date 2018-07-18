@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Voting from '../components/Voting';
+import { Voting } from '../components/Voting';
 import Winner from '../components/Winner';
 
 let wrapper;

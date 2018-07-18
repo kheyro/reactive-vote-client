@@ -1,18 +1,25 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Vote from './Vote';
 import Winner from './Winner';
 
-class Voting extends Component {
+export class Voting extends Component {
   render() {
     return (
       <div>
-        {this.props.winner
-          ? <Winner winner={this.props.winner} />
-          : <Vote {...this.props} />
-        }
+        {this.props.winner ? (
+          <Winner winner={this.props.winner} />
+        ) : (
+          <Vote {...this.props} />
+        )}
       </div>
     );
   }
 }
 
-export default Voting;
+const mapStateToProps = state => ({
+  pair: state.getIn(['vote', 'pair']),
+  winner: state.get('winner'),
+});
+
+export const VotingContainer = connect(mapStateToProps)(Voting);
