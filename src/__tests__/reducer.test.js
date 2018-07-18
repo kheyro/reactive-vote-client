@@ -104,4 +104,30 @@ describe('Reducers', () => {
       })
     );
   });
+
+  it('removes hasVoted on SET_STATE if pair changes', () => {
+    const initialState = fromJS({
+      vote: {
+        pair: ['Brazil', 'France'],
+        tally: { 'France': 4 },
+      },
+      hasVoted: 'France',
+    });
+    const action = {
+      type: 'SET_STATE',
+      state: {
+        vote: {
+          pair: ['Portugal', 'Spain'],
+        },
+      },
+    };
+    const nextState = reducer(initialState, action);
+    expect(nextState).toEqual(
+      fromJS({
+        vote: {
+          pair: ['Portugal', 'Spain'],
+        },
+      })
+    );
+  });
 });
